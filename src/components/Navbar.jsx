@@ -17,7 +17,8 @@ export default function Navbar() {
     <nav className="bg-white shadow-md fixed w-full z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-blue-700">
+        <Link to="/" className="text-2xl font-bold text-purple-600 flex items-center">
+          <img src='src/assets/logo-transparent.png' alt='Chrysle Tours' className='w-10'></img>
           Chrysle Tours
         </Link>
 

@@ -1,12 +1,64 @@
-# React + Vite
+# Chrysle Tours 🌴✈️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive travel agency website built using **React**, **Vite**, **Tailwind CSS**, **Framer Motion**, and **MUI**. This website is designed to showcase travel services across Sri Lanka, offering beautiful galleries, service descriptions, and contact details for bookings.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ⚡️ Fast development with Vite
+- 🎨 Tailwind CSS for elegant, responsive UI
+- 🖼️ Animated gallery and transitions with Framer Motion
+- 📱 Fully responsive on all devices
+- 🔍 SEO optimized `index.html`
+- 🌐 Social media integration (Open Graph & Twitter Cards)
+- 📦 Modular folder structure for scalability
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+| Tech             | Usage                          |
+|------------------|--------------------------------|
+| React            | Frontend Library               |
+| Vite             | Build Tool                     |
+| Tailwind CSS     | Utility-first CSS Framework    |
+| Framer Motion    | Animation library              |
+| MUI (Material UI Icons) | Icons and components     |
+
+---
+
+## 📁 Project Structure
+
+chrysle-tours/
+├── public/
+├── src/
+│ ├── assets/
+│ ├── components/
+│ ├── pages/
+│ ├── App.jsx
+│ └── main.jsx
+├── index.html
+└── README.md
+
+
+
+---
+
+🔗 **Live Demo**  
+Site URL: https://chrysletours.com
+
+---
+
+📝 **License**  
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 About the Developer
+
+Developed and maintained by **S JAY Web Solutions (Pvt) Ltd**, specializing in high-quality, scalable web solutions tailored to client needs.
+
+---
+
+

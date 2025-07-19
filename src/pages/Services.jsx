@@ -2,12 +2,11 @@ import { motion } from 'framer-motion';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-// Import images for service categories
-import CulturalImage from '../assets/cultural-sri-lanka.jpg'; // Example: Sigiriya, Kandy Temple
-import WildlifeImage from '../assets/wildlife-safari.jpg'; // Example: Leopard in Yala
-import AdventureImage from '../assets/adventure-sri-lanka.jpg'; // Example: Ella Bridge, Surfing
-import BeachImage from '../assets/beach-relaxation.jpg'; // Example: Mirissa beach
-import CustomTourImage from '../assets/custom-tour.jpg'; // Example: Map or diverse elements
+import CulturalImage from '../assets/cultural-sri-lanka.jpg';
+import WildlifeImage from '../assets/wildlife-safari.jpg';
+import AdventureImage from '../assets/adventure-sri-lanka.jpg';
+import BeachImage from '../assets/beach-relaxation.jpg';
+import CustomTourImage from '../assets/custom-tour.jpg';
 
 const serviceCategories = [
   {
@@ -16,7 +15,6 @@ const serviceCategories = [
     description: 'Delve into Sri Lanka\'s rich history and ancient civilizations. Explore UNESCO World Heritage Sites, majestic temples, and vibrant local traditions.',
     image: CulturalImage,
     highlights: ['Ancient Cities (Anuradhapura, Polonnaruwa)', 'Kandy & Temple of the Tooth', 'Galle Fort', 'Dambulla Cave Temple'],
-    link: '/cultural-tours' // Link to a more detailed page if available
   },
   {
     id: 'wildlife',
@@ -24,7 +22,6 @@ const serviceCategories = [
     description: 'Experience the incredible biodiversity of Sri Lanka. Spot leopards, elephants, exotic birds, and marine life in national parks and sanctuaries.',
     image: WildlifeImage,
     highlights: ['Yala National Park', 'Udawalawe Elephant Sanctuary', 'Mirissa Whale Watching', 'Sinharaja Rainforest'],
-    link: '/wildlife-tours'
   },
   {
     id: 'adventure',
@@ -32,7 +29,6 @@ const serviceCategories = [
     description: 'For thrill-seekers and nature lovers, embark on exhilarating adventures from misty mountains to captivating coastlines.',
     image: AdventureImage,
     highlights: ['Hiking in Ella & Horton Plains', 'Surfing in Arugam Bay & Weligama', 'White Water Rafting (Kitulgala)', 'Cycling Trails'],
-    link: '/adventure-tours'
   },
   {
     id: 'beach',
@@ -40,9 +36,7 @@ const serviceCategories = [
     description: 'Unwind on Sri Lanka\'s pristine golden beaches. Enjoy sun-drenched shores, turquoise waters, and luxurious beachfront resorts.',
     image: BeachImage,
     highlights: ['Mirissa', 'Unawatuna', 'Bentota', 'Tangalle'],
-    link: '/beach-tours'
   },
-  // Add more categories if relevant: e.g., 'Culinary Tours', 'Wellness & Yoga Retreats', 'Family Tours'
 ];
 
 export default function Services() {
@@ -51,13 +45,12 @@ export default function Services() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen pt-20 bg-gray-50" // pt-20 for fixed Navbar
+      className="min-h-screen pt-20 bg-gray-50"
     >
-      {/* Hero/Banner Section */}
       <section className="relative h-96 w-full flex items-center justify-center text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${CustomTourImage})` }} // Using a diverse image for services banner
+          style={{ backgroundImage: `url(${CustomTourImage})` }}
           aria-label="Diverse travel experiences in Sri Lanka"
         ></div>
         <div className="absolute inset-0 bg-black opacity-60"></div>
@@ -76,7 +69,6 @@ export default function Services() {
         </motion.div>
       </section>
 
-      {/* Introduction to Services */}
       <section className="py-20 bg-white text-gray-800">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.h2
@@ -109,7 +101,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Our Core Offerings (Categorized Tours) */}
       <section className="py-20 bg-gray-100 text-gray-800">
         <div className="container mx-auto px-6">
           <motion.h2
@@ -153,15 +144,6 @@ export default function Services() {
                       </ul>
                     </div>
                   </div>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    component={Link}
-                    to={category.link || '/contact'} // Fallback to contact if no specific page
-                    sx={{ alignSelf: 'flex-start', mt: 2, px: 4, py: 1.5, fontWeight: 'bold' }}
-                  >
-                    View Details & Packages
-                  </Button>
                 </div>
               </motion.div>
             ))}
@@ -169,7 +151,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Tailor-Made Tours Section */}
       <section className="py-20 bg-white text-gray-800">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.h2
@@ -210,7 +191,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Why Book With Us (Services Specific) */}
       <section className="py-20 bg-blue-50 text-gray-800">
         <div className="container mx-auto px-6 max-w-5xl">
           <motion.h2
@@ -227,32 +207,32 @@ export default function Services() {
               {
                 title: "Expert Local Knowledge",
                 description: "Our team lives and breathes Sri Lanka, offering unparalleled insights and authentic experiences.",
-                icon: "💡" // Replace with SVG icon
+                icon: "💡"
               },
               {
                 title: "Hassle-Free Planning",
                 description: "We handle all logistics: accommodations, transport, activities, ensuring a smooth journey.",
-                icon: "🗓️" // Replace with SVG icon
+                icon: "🗓️"
               },
               {
                 title: "Quality Accommodations",
                 description: "Stay in hand-picked hotels and resorts that match your style and comfort preferences.",
-                icon: "🏨" // Replace with SVG icon
+                icon: "🏨"
               },
               {
                 title: "Safe & Reliable Transport",
                 description: "Travel comfortably and securely with our modern fleet and experienced drivers.",
-                icon: "🚗" // Replace with SVG icon
+                icon: "🚗"
               },
               {
                 title: "Dedicated Support",
                 description: "24/7 assistance throughout your trip, giving you peace of mind.",
-                icon: "📞" // Replace with SVG icon
+                icon: "📞"
               },
               {
                 title: "Competitive Pricing",
                 description: "Exceptional value without compromising on quality or experience.",
-                icon: "💲" // Replace with SVG icon
+                icon: "💲"
               },
             ].map((item, index) => (
               <motion.div
@@ -272,7 +252,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* How It Works Section (Optional - Useful for clarity) */}
       <section className="py-20 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.h2
@@ -285,44 +264,30 @@ export default function Services() {
             How Booking with Us Works
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="p-6 bg-blue-600 rounded-lg shadow-xl"
-            >
-              <div className="text-6xl mb-4">1</div>
-              <h3 className="text-xl font-bold mb-2">Tell Us Your Dream</h3>
-              <p className="text-sm opacity-90">Share your interests, dates, and budget via our inquiry form.</p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="p-6 bg-blue-600 rounded-lg shadow-xl"
-            >
-              <div className="text-6xl mb-4">2</div>
-              <h3 className="text-xl font-bold mb-2">Receive Your Custom Plan</h3>
-              <p className="text-sm opacity-90">Our experts will craft a personalized itinerary and quote for you.</p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="p-6 bg-blue-600 rounded-lg shadow-xl"
-            >
-              <div className="text-6xl mb-4">3</div>
-              <h3 className="text-xl font-bold mb-2">Embark on Your Journey!</h3>
-              <p className="text-sm opacity-90">Confirm your tour and get ready for an unforgettable Sri Lankan adventure.</p>
-            </motion.div>
+            {["Tell Us Your Dream", "Receive Your Custom Plan", "Embark on Your Journey!"].map((title, idx) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.1 * (idx + 1) }}
+                className="p-6 bg-blue-600 rounded-lg shadow-xl"
+              >
+                <div className="text-6xl mb-4">{idx + 1}</div>
+                <h3 className="text-xl font-bold mb-2">{title}</h3>
+                <p className="text-sm opacity-90">
+                  {[
+                    "Share your interests, dates, and budget via our inquiry form.",
+                    "Our experts will craft a personalized itinerary and quote for you.",
+                    "Confirm your tour and get ready for an unforgettable Sri Lankan adventure."
+                  ][idx]}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Final Call to Action */}
       <section className="py-20 bg-gray-50 text-gray-800">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.h2
