@@ -1,84 +1,108 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import Logo from '../assets/logo-transparent.png'; // Make sure this path is correct
 
 const links = [
   { name: 'Home', path: '/' },
-  { name: 'About', 'path': '/about' },
-  { name: 'Services', 'path': '/services' },
-  { name: 'Gallery', 'path': '/gallery' },
-  { name: 'Contact', 'path': '/contact' },
+  { name: 'About', path: '/about' },
+  { name: 'Services', path: '/services' },
+  { name: 'Gallery', path: '/gallery' },
+  { name: 'Contact', path: '/contact' },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Effect to handle scroll state
+  useEffect(() => {
+    const handleScroll = () => {
+      // Set to true if scrolled more than 50px, else false
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Cleanup function to remove the event listener
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="bg-white shadow-md fixed w-full z-50">
+    <nav 
+      className={`fixed w-full z-50 transition-all duration-300 ease-in-out ${
+        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-purple-600 flex items-center">
-          <img src='src/assets/logo-transparent.png' alt='Chrysle Tours' className='w-10'></img>
+        <Link 
+          to="/" 
+          className={`text-2xl font-bold flex items-center transition-colors duration-300 ${
+            isScrolled ? 'text-brand-purple' : 'text-white'
+          }`}
+        >
+          <img src={Logo} alt='Chrysle Tours' className='w-10 mr-2' />
           Chrysle Tours
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
-          {links.map(({ name, path }) => (
-            <NavLink
-              key={name}
-              to={path}
-              end
-              className={({ isActive }) =>
-                `font-medium text-gray-700 hover:text-blue-600 transition ${
-                  isActive ? 'text-blue-700' : ''
-                }`
-              }
-            >
-              <motion.span whileHover={{ scale: 1.1 }}>
-                {name}
-              </motion.span>
-            </NavLink>
-          ))}
+        <div className="hidden md:flex items-center space-x-6">
+          {links.map(({ name, path }, index) => {
+            // Check if it's the last link (Contact) to style as a button
+            if (index === links.length - 1) {
+              return (
+                <Link key={name} to={path}>
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-5 py-2 rounded-full font-medium text-white bg-orange-400 hover:bg-orange-200 transition-colors duration-300 shadow-md"
+                  >
+                    {name}
+                  </motion.button>
+                </Link>
+              );
+            }
+            // Render all other links
+            return (
+              <NavLink
+                key={name}
+                to={path}
+                end
+                className={({ isActive }) =>
+                  'font-medium transition-colors duration-300 relative ' +
+                  (isActive
+                    ? 'text-orange-400' // Active color (orange)
+                    : isScrolled
+                      ? 'text-gray-700 hover:text-orange-400' // Scrolled, not active
+                      : 'text-white hover:text-orange-200') + // Transparent, not active
+                  // Active link underline
+                  (isActive ? ' after:content-[""] after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-orange-400' : '')
+                }
+              >
+                <motion.span whileHover={{ y: -2 }}>
+                  {name}
+                </motion.span>
+              </NavLink>
+            );
+          })}
         </div>
 
         {/* Hamburger Menu Button */}
         <button
-          className="md:hidden focus:outline-none"
+          className={`md:hidden focus:outline-none transition-colors duration-300 ${
+            isScrolled ? 'text-brand-purple' : 'text-white'
+          }`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
-          aria-expanded={open} // Added for accessibility
+          aria-expanded={open}
         >
           {open ? (
-            <svg
-              className="w-8 h-8 text-blue-700"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <CloseIcon fontSize="large" />
           ) : (
-            <svg
-              className="w-8 h-8 text-blue-700"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            <MenuIcon fontSize="large" />
           )}
         </button>
       </div>
@@ -90,20 +114,20 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white shadow-inner"
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            // Always white background for mobile dropdown
+            className="md:hidden bg-white shadow-lg"
           >
-            <ul className="flex flex-col space-y-4 px-6 py-4">
+            <ul className="flex flex-col px-6 py-4">
               {links.map(({ name, path }) => (
-                <li key={name}>
+                <li key={name} className="border-b border-gray-100">
                   <NavLink
                     to={path}
                     end
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
-                      `block text-gray-700 font-medium hover:text-blue-600 transition ${
-                        isActive ? 'text-blue-700' : ''
-                      }`
+                      'block w-full py-4 text-gray-700 font-medium transition-colors duration-300 ' +
+                      (isActive ? 'text-brand-orange' : 'hover:text-brand-orange')
                     }
                   >
                     {name}

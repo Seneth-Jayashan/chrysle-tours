@@ -1,25 +1,76 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react'; // Added useRef
 import { motion } from 'framer-motion';
-import { Button, TextField, TextareaAutosize } from '@mui/material';
+import { Button, TextField, IconButton, Alert } from '@mui/material'; // Added Alert
 import { Link } from 'react-router-dom';
+import emailjs from '@emailjs/browser'; // 1. Import EmailJS
+
+// --- Import Page-Specific Icons ---
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 import contactBannerImage from '../assets/traveller.jpg';
 
+// --- Brand Colors ---
+const logoColors = {
+  purple: '#5A2A84',
+  darkerPurple: '#3E1C5A',
+  orange: '#F7941E',
+  lighterOrange: '#FDBB2D',
+};
+
 export default function Contact() {
+  const form = useRef(); // 2. Create a ref for the form
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    // 3. Send the email using EmailJS
+    emailjs.sendForm(
+      'service_sx6ppbf',     // <-- Paste your Service ID
+      'contact_us_form',    // <-- Paste your Template ID
+      form.current,
+      'ghfiBcYBYZC__KwNg'      // <-- Paste your Public Key
+    )
+    .then(
+      (result) => {
+        console.log('SUCCESS!', result.text);
+        setIsSending(false);
+        setIsSent(true);
+        // Optional: Reset form
+        form.current.reset();
+      },
+      (error) => {
+        console.log('FAILED...', error.text);
+        setIsSending(false);
+      }
+    );
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0 }} 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen pt-20 bg-gray-50"
+      className="min-h-screen bg-gray-50"
     >
+      {/* --- Hero Section --- */}
       <section className="relative h-96 w-full flex items-center justify-center text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${contactBannerImage})` }}
           aria-label="Connect with Chrysle Tours"
         ></div>
-        <div className="absolute inset-0 bg-black opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,70 +86,181 @@ export default function Contact() {
         </motion.div>
       </section>
 
-      <section className="py-20 bg-white text-gray-800">
-        <div className="container mx-auto px-6 max-w-5xl">
+      {/* --- Two-Column Layout (Info + Form) --- */}
+      <section className="py-24 bg-white text-gray-800">
+        <div className="container mx-auto px-6 max-w-6xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-bold text-center text-blue-700 mb-12"
+            className="text-4xl md:text-5xl font-extrabold text-center mb-16"
+            style={{ color: logoColors.purple }}
           >
             Get In Touch With Our Travel Experts
           </motion.h2>
 
-          <div>
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* --- Column 1: Info Block --- */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
-              className="bg-blue-50 p-8 rounded-lg shadow-lg"
+              className="bg-gray-50 p-8 rounded-lg shadow-lg"
             >
-              <h3 className="text-3xl font-semibold text-blue-800 mb-6">Reach Out Directly</h3>
+              {/* (Info block content is unchanged) */}
+              <h3 className="text-3xl font-bold mb-6" style={{ color: logoColors.purple }}>
+                Reach Out Directly
+              </h3>
               <div className="space-y-6 text-lg">
                 <p className="flex items-center">
-                  <span className="text-blue-600 mr-3 text-2xl">📞</span>
-                  <strong>Phone:</strong> <a href="tel:+94771234567" className="ml-2 text-gray-700 hover:text-blue-600 transition">+94 7777 601 787</a> (Sri Lanka)
+                  <PhoneIcon className="mr-3" style={{ color: logoColors.purple }} />
+                  <strong>Phone:</strong> <a href="tel:+94777601787" className="ml-2 text-gray-700 hover:text-brand-orange transition">+94 777 601 787</a>
                 </p>
                 <p className="flex items-center">
-                  <span className="text-blue-600 mr-3 text-2xl">📧</span>
-                  <strong>Email:</strong> <a href="mailto:info@chrysletours.com" className="ml-2 text-gray-700 hover:text-blue-600 transition">info@chrysletours.com</a>
+                  <EmailIcon className="mr-3" style={{ color: logoColors.purple }} />
+                  <strong>Email:</strong> <a href="mailto:info@chrysletours.com" className="ml-2 text-gray-700 hover:text-brand-orange transition">info@chrysletours.com</a>
                 </p>
-                <p className="flex items-center">
-                  <span className="text-blue-600 mr-3 text-2xl">📍</span>
+                <p className="flex items-start">
+                  <LocationOnIcon className="mr-3 mt-1" style={{ color: logoColors.purple }} />
                   <strong>Address:</strong> <span className="ml-2">Colombo, Sri Lanka</span>
                 </p>
                 <p className="flex items-center">
-                  <span className="text-blue-600 mr-3 text-2xl">⏰</span>
-                  <strong>Working Hours:</strong> <span className="ml-2">Monday - Sunday: 9:00 AM - 5:00 PM (LKT)</span>
+                  <ScheduleIcon className="mr-3" style={{ color: logoColors.purple }} />
+                  <strong>Working Hours:</strong> <span className="ml-2">Mon - Sun: 9:00 AM - 5:00 PM (LKT)</span>
                 </p>
               </div>
-              <h3 className="text-2xl font-semibold text-blue-800 mt-8 mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                <a href="https://www.facebook.com/people/Chrysle-Tours/61555784379931/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-500 transition-colors text-4xl">
-                  <img src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="Facebook" className="w-8 h-8" />
-                </a>
-                <a href="https://instagram.com/chrysletours" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-500 transition-colors text-4xl">
-                  <img src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram" className="w-8 h-8" />
-                </a>
-                <a href="https://twitter.com/chrysletours" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-500 transition-colors text-4xl">
-                  <img src="https://img.icons8.com/ios-filled/50/twitterx.png" alt="Twitter/X" className="w-8 h-8" />
-                </a>
+              <h3 className="text-2xl font-bold mt-10 mb-4" style={{ color: logoColors.purple }}>
+                Follow Us
+              </h3>
+              <div className="flex space-x-2">
+                <IconButton 
+                  aria-label="Facebook" 
+                  href="https://www.facebook.com/people/Chrysle-Tours/61555784379931/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  sx={{ color: logoColors.purple, '&:hover': { color: logoColors.orange } }}
+                >
+                  <FacebookIcon />
+                </IconButton>
+                <IconButton 
+                  aria-label="Instagram" 
+                  href="https://www.instagram.com/chrysletours" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  sx={{ color: logoColors.purple, '&:hover': { color: logoColors.orange } }}
+                >
+                  <InstagramIcon />
+                </IconButton>
+                <IconButton 
+                  aria-label="Twitter" 
+                  href="https://twitter.com/chrysletours" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  sx={{ color: logoColors.purple, '&:hover': { color: logoColors.orange } }}
+                >
+                  <TwitterIcon />
+                </IconButton>
+                <IconButton 
+                  aria-label="LinkedIn" 
+                  href="https://www.linkedin.com/company/chrysletours" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  sx={{ color: logoColors.purple, '&:hover': { color: logoColors.orange } }}
+                >
+                  <LinkedInIcon />
+                </IconButton>
               </div>
+            </motion.div>
+
+            {/* --- Column 2: Contact Form --- */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="p-8 bg-gray-50 rounded-lg shadow-lg"
+            >
+              <h3 className="text-3xl font-bold mb-6" style={{ color: logoColors.purple }}>
+                Send Us a Message
+              </h3>
+              
+              {/* 4. Wrap your fields in the form tag */}
+              <form ref={form} onSubmit={handleSubmit} className="space-y-6">
+                <TextField
+                  fullWidth
+                  label="Your Name"
+                  name="name" // Make sure 'name' matches your EmailJS template
+                  required
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  label="Your Email"
+                  name="email" // Make sure 'name' matches your EmailJS template
+                  type="email"
+                  required
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  label="Subject"
+                  name="subject" // Make sure 'name' matches your EmailJS template
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  label="Your Message"
+                  name="message" // Make sure 'name' matches your EmailJS template
+                  required
+                  multiline
+                  rows={6}
+                  variant="outlined"
+                />
+                
+                {/* 5. Show success message */}
+                {isSent && (
+                  <Alert severity="success">Message Sent! We will get back to you soon.</Alert>
+                )}
+
+                <Button
+                  type="submit"
+                  variant="contained"
+                  size="large"
+                  fullWidth
+                  disabled={isSending} // Disable button while sending
+                  sx={{
+                    fontWeight: 'bold',
+                    py: 1.5,
+                    fontSize: '1.1rem',
+                    backgroundColor: logoColors.orange,
+                    '&:hover': {
+                      backgroundColor: logoColors.lighterOrange
+                    }
+                  }}
+                >
+                  {isSending ? 'Sending...' : 'Send Message'}
+                </Button>
+              </form>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-blue-800 text-white text-center">
+      {/* --- Final CTA (Unchanged) --- */}
+      <section 
+        className="py-24 text-center"
+        style={{ background: `linear-gradient(to right, ${logoColors.orange}, ${logoColors.lighterOrange})` }}
+      >
+        {/* (Content is unchanged) */}
         <div className="container mx-auto px-6 max-w-3xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-extrabold text-white mb-6"
           >
             Ready to Start Your Journey?
           </motion.h2>
@@ -107,7 +269,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl mb-10"
+            className="text-xl text-white mb-10"
           >
             Don't hesitate to reach out! Our friendly team is eager to assist you in planning your dream Sri Lankan adventure.
           </motion.p>
@@ -119,7 +281,6 @@ export default function Contact() {
           >
             <Button
               variant="contained"
-              color="secondary"
               component={Link}
               to="/services"
               size="large"
@@ -129,8 +290,11 @@ export default function Contact() {
                 py: 2,
                 fontSize: '1.25rem',
                 backgroundColor: 'white',
-                color: '#1E40AF',
-                '&:hover': { backgroundColor: '#F3F4F6' },
+                color: logoColors.purple,
+                '&:hover': { 
+                  backgroundColor: '#F3F4F6',
+                  color: logoColors.darkerPurple
+                },
               }}
             >
               View Our Services

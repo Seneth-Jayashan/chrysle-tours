@@ -3,38 +3,41 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
+// --- Asset Imports (Unchanged) ---
 import galleryBanner from '../assets/adventure-sri-lanka.jpg';
-
 import sigiriyaView from '../assets/cultural/sigiriya-view.jpg';
 import kandyTemple from '../assets/cultural/kandy-temple.jpg';
 import galleFortStreets from '../assets/cultural/galle-fort.jpg';
-
 import yalaLeopard from '../assets/wildlife/yala.jpg';
 import udawalaweElephants from '../assets/wildlife-safari.jpg';
 import mirissaWhale from '../assets/wildlife/beach.jpg';
 import sinharajaForest from '../assets/wildlife/sinharaja.jpg';
-
 import mirissaBeach from '../assets//beaches/beach1.jpg';
 import unawatunaSunset from '../assets/wildlife/beach.jpg';
 import bentotaWaterSports from '../assets/beaches/bentota.jpg';
-
 import ellaNineArchBridge from '../assets/adventure/nine-arch.jpg';
 import kitulgalaRafting from '../assets/adventure/kithulgala.jpg';
 
+// --- Brand Colors ---
+const logoColors = {
+  purple: '#5A2A84',
+  darkerPurple: '#3E1C5A',
+  orange: '#F7941E',
+  lighterOrange: '#FDBB2D',
+};
+
+// --- Data (Unchanged) ---
 const galleryImages = [
   { id: 1, src: sigiriyaView, alt: 'Panoramic view from Sigiriya Rock Fortress', category: 'Cultural' },
   { id: 2, src: kandyTemple, alt: 'Temple of the Tooth Relic in Kandy', category: 'Cultural' },
   { id: 3, src: galleFortStreets, alt: 'Charming streets inside Galle Fort', category: 'Cultural' },
-
   { id: 5, src: yalaLeopard, alt: 'Leopard resting on a tree in Yala National Park', category: 'Wildlife' },
   { id: 6, src: udawalaweElephants, alt: 'Herd of elephants near a lake in Udawalawe', category: 'Wildlife' },
   { id: 7, src: mirissaWhale, alt: 'Blue whale surfacing during whale watching in Mirissa', category: 'Wildlife' },
   { id: 8, src: sinharajaForest, alt: 'Lush greenery and waterfall in Sinharaja Rainforest', category: 'Wildlife' },
-
   { id: 9, src: mirissaBeach, alt: 'Tropical Mirissa beach with palm trees', category: 'Beaches' },
   { id: 10, src: unawatunaSunset, alt: 'Sunset over Unawatuna beach', category: 'Beaches' },
   { id: 11, src: bentotaWaterSports, alt: 'Water sports activities in Bentota lagoon', category: 'Beaches' },
-
   { id: 13, src: ellaNineArchBridge, alt: 'Iconic Nine Arch Bridge in Ella', category: 'Adventure' },
   { id: 16, src: kitulgalaRafting, alt: 'White water rafting in Kitulgala river', category: 'Adventure' },
 ];
@@ -55,18 +58,21 @@ export default function Gallery() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0 }} 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen pt-20 bg-gray-50"
+      className="min-h-screen bg-gray-50" // Unchanged
     >
-      <section className="relative h-96 w-full flex items-center justify-center text-white overflow-hidden">
+      {/* --- Hero Section --- */}
+      <section className="relative h-96 md:h-72 w-full flex items-center justify-center text-white overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-[50%_25%] bg-no-repeat"
           style={{ backgroundImage: `url(${galleryBanner})` }}
           aria-label="Beautiful montage of Sri Lankan attractions"
         ></div>
-        <div className="absolute inset-0 bg-black opacity-60"></div>
+        {/* === UPDATED OVERLAY === */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,30 +88,33 @@ export default function Gallery() {
         </motion.div>
       </section>
 
+      {/* --- Intro Text Section --- */}
       <section className="py-16 bg-white text-gray-800">
         <div className="container mx-auto px-6 max-w-4xl text-center">
-          <motion.p
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
-            className="text-lg leading-relaxed mb-4"
+            className="text-4xl md:text-5xl font-extrabold text-center mb-8"
+            style={{ color: logoColors.purple }} // BRANDED
           >
-            Welcome to Chrysle Tours' visual diary! Here, every image tells a story of discovery, adventure, and tranquility in the heart of Sri Lanka.
-          </motion.p>
+            Immerse Yourself
+          </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg leading-relaxed"
+            className="text-lg text-gray-700 leading-relaxed"
           >
-            Immerse yourself in breathtaking landscapes, vibrant culture, incredible wildlife, and stunning beaches. Let these moments inspire your next journey with us.
+            Welcome to Chrysle Tours' visual diary! Here, every image tells a story of discovery, adventure, and tranquility in the heart of Sri Lanka. Let these moments inspire your next journey with us.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-8 bg-blue-50">
+      {/* --- BRANDED Filter Button Section --- */}
+      <section className="py-10 bg-gray-100">
         <div className="container mx-auto px-6 flex flex-wrap justify-center gap-4">
           {categories.map(cat => (
             <motion.button
@@ -115,9 +124,13 @@ export default function Gallery() {
               onClick={() => setFilter(cat)}
               className={`px-6 py-2 rounded-full text-lg font-semibold transition-all duration-300 ${
                 filter === cat
-                  ? 'bg-blue-700 text-white shadow-md'
-                  : 'bg-white text-blue-700 border border-blue-700 hover:bg-blue-100'
+                  ? 'bg-brand-purple text-white shadow-md' // BRANDED Active State
+                  : 'bg-white text-brand-purple border border-brand-purple hover:bg-purple-50' // BRANDED Inactive State
               }`}
+              style={{
+                '--tw-shadow-color': logoColors.purple,
+                '--tw-shadow': '0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color)'
+              }}
             >
               {cat}
             </motion.button>
@@ -125,7 +138,8 @@ export default function Gallery() {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      {/* --- Image Grid Section (No changes needed, already looks great) --- */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <AnimatePresence>
@@ -144,8 +158,8 @@ export default function Gallery() {
                     alt={image.alt}
                     className="w-full h-64 object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <p className="text-white text-lg font-medium">{image.alt}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <p className="text-white text-base font-medium">{image.alt}</p>
                   </div>
                 </motion.div>
               ))}
@@ -163,14 +177,18 @@ export default function Gallery() {
         </div>
       </section>
 
-      <section className="py-20 bg-blue-700 text-white text-center">
+      {/* --- BRANDED Final CTA Section --- */}
+      <section 
+        className="py-24 text-center" // Increased padding
+        style={{ background: `linear-gradient(to right, ${logoColors.orange}, ${logoColors.lighterOrange})` }}
+      >
         <div className="container mx-auto px-6 max-w-3xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-extrabold text-white mb-6"
           >
             Inspired by What You See?
           </motion.h2>
@@ -179,7 +197,7 @@ export default function Gallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl mb-10"
+            className="text-xl text-white mb-10"
           >
             Let Chrysle Tours turn these stunning visuals into your real-life experiences.
           </motion.p>
@@ -191,18 +209,19 @@ export default function Gallery() {
           >
             <Button
               variant="contained"
-              color="primary"
               component={Link}
-              to="/services"
+              to="/services" // Links to services, which is great!
               size="large"
-              sx={{
-                fontWeight: 'bold',
-                px: 8,
-                py: 2,
+              sx={{ 
+                fontWeight: 'bold', 
+                px: 8, py: 2, 
                 fontSize: '1.25rem',
                 backgroundColor: 'white',
-                color: '#1E40AF',
-                '&:hover': { backgroundColor: '#F3F4F6' },
+                color: logoColors.purple, // BRANDED
+                '&:hover': {
+                  backgroundColor: '#f3f4f6',
+                  color: logoColors.darkerPurple // BRANDED
+                }
               }}
             >
               Explore Our Tour Packages
