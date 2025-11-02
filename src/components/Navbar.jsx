@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import Logo from '../assets/logo-transparent.png'; // Make sure this path is correct
+import Logo from '../assets/logo-transparent.png'; 
 
 const links = [
   { name: 'Home', path: '/' },
@@ -17,16 +17,13 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Effect to handle scroll state
   useEffect(() => {
     const handleScroll = () => {
-      // Set to true if scrolled more than 50px, else false
       setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     
-    // Cleanup function to remove the event listener
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -37,7 +34,6 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center p-4">
-        {/* Logo */}
         <Link 
           to="/" 
           className={`text-2xl font-bold flex items-center transition-colors duration-300 ${
@@ -48,10 +44,8 @@ export default function Navbar() {
           Chrysle Tours
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6">
           {links.map(({ name, path }, index) => {
-            // Check if it's the last link (Contact) to style as a button
             if (index === links.length - 1) {
               return (
                 <Link key={name} to={path}>
@@ -65,7 +59,6 @@ export default function Navbar() {
                 </Link>
               );
             }
-            // Render all other links
             return (
               <NavLink
                 key={name}
@@ -74,11 +67,10 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   'font-medium transition-colors duration-300 relative ' +
                   (isActive
-                    ? 'text-orange-400' // Active color (orange)
+                    ? 'text-orange-400' 
                     : isScrolled
-                      ? 'text-gray-700 hover:text-orange-400' // Scrolled, not active
-                      : 'text-white hover:text-orange-200') + // Transparent, not active
-                  // Active link underline
+                      ? 'text-gray-700 hover:text-orange-400' 
+                      : 'text-white hover:text-orange-200') +
                   (isActive ? ' after:content-[""] after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-orange-400' : '')
                 }
               >
@@ -90,7 +82,6 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Hamburger Menu Button */}
         <button
           className={`md:hidden focus:outline-none transition-colors duration-300 ${
             isScrolled ? 'text-brand-purple' : 'text-white'
@@ -107,7 +98,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -115,7 +105,6 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            // Always white background for mobile dropdown
             className="md:hidden bg-white shadow-lg"
           >
             <ul className="flex flex-col px-6 py-4">

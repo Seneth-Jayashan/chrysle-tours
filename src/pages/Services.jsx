@@ -2,20 +2,17 @@ import { motion } from 'framer-motion';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-// --- Import NEW Icons for "How it Works" ---
 import ChatIcon from '@mui/icons-material/Chat';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // For highlights
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'; 
 
-// --- Import Image Assets ---
 import CulturalImage from '../assets/cultural-sri-lanka.jpg';
 import WildlifeImage from '../assets/wildlife-safari.jpg';
 import AdventureImage from '../assets/adventure-sri-lanka.jpg';
 import BeachImage from '../assets/beach-relaxation.jpg';
 import CustomTourImage from '../assets/custom-tour.jpg';
 
-// --- Brand Colors ---
 const logoColors = {
   purple: '#5A2A84',
   darkerPurple: '#3E1C5A',
@@ -23,7 +20,6 @@ const logoColors = {
   lighterOrange: '#FDBB2D',
 };
 
-// --- Service Categories (Unchanged) ---
 const serviceCategories = [
   {
     id: 'cultural',
@@ -55,7 +51,6 @@ const serviceCategories = [
   },
 ];
 
-// --- NEW "How it Works" Data ---
 const howItWorksSteps = [
   {
     step: "1",
@@ -84,16 +79,14 @@ export default function Services() {
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen" // Keep pt-20 to clear fixed navbar
+      className="min-h-screen"
     >
-      {/* --- Hero Section --- */}
       <section className="relative h-96 md:h-72  w-full flex items-center justify-center text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${CustomTourImage})` }}
           aria-label="Diverse travel experiences in Sri Lanka"
         ></div>
-        {/* === UPDATED OVERLAY === */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
         
         <motion.div
@@ -111,7 +104,6 @@ export default function Services() {
         </motion.div>
       </section>
 
-      {/* --- Intro Text Section --- */}
       <section className="py-24 bg-white text-gray-800">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.h2
@@ -120,7 +112,7 @@ export default function Services() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-extrabold mb-8"
-            style={{ color: logoColors.purple }} // BRANDED
+            style={{ color: logoColors.purple }} 
           >
             Your Gateway to Sri Lanka's Wonders
           </motion.h2>
@@ -145,7 +137,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* --- NEW UI: Tour Categories --- */}
       <section className="py-24 bg-gray-50 text-gray-800">
         <div className="container mx-auto px-6 max-w-6xl">
           <motion.h2
@@ -154,12 +145,11 @@ export default function Services() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-extrabold text-center mb-12"
-            style={{ color: logoColors.purple }} // BRANDED
+            style={{ color: logoColors.purple }} 
           >
             Explore Our Popular Tour Categories
           </motion.h2>
 
-          {/* === NEW Interactive Grid Layout === */}
           <div className="grid md:grid-cols-2 gap-10">
             {serviceCategories.map((category, index) => (
               <motion.div
@@ -170,7 +160,6 @@ export default function Services() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer"
               >
-                {/* Image */}
                 <div className="w-full h-96 overflow-hidden">
                   <img 
                     src={category.image} 
@@ -179,7 +168,6 @@ export default function Services() {
                   />
                 </div>
 
-                {/* Overlay Content */}
                 <div 
                   className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent 
                              flex flex-col justify-end p-8 text-white opacity-0 group-hover:opacity-100 
@@ -192,7 +180,6 @@ export default function Services() {
                     {category.description}
                   </p>
                   
-                  {/* Highlights List */}
                   <div className="mb-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-in-out delay-200">
                     <h4 className="font-semibold text-brand-orange-light mb-2">Highlights:</h4>
                     <ul className="space-y-1">
@@ -222,7 +209,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* --- Custom Tour CTA Section --- */}
       <section className="py-24 bg-white text-gray-800">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.h2
@@ -231,7 +217,7 @@ export default function Services() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-extrabold mb-8"
-            style={{ color: logoColors.purple }} // BRANDED
+            style={{ color: logoColors.purple }} 
           >
             Your Dream Tour, Crafted Just For You
           </motion.h2>
@@ -255,7 +241,6 @@ export default function Services() {
               component={Link}
               to="/contact"
               size="large"
-              // BRANDED
               sx={{ 
                 fontWeight: 'bold', px: 8, py: 2, fontSize: '1.25rem',
                 backgroundColor: logoColors.orange,
@@ -270,7 +255,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* --- NEW UI: "How Booking Works" Section --- */}
       <section className="py-24 bg-gray-50 text-gray-800">
         <div className="container mx-auto px-6 max-w-5xl text-center">
           <motion.h2
@@ -279,7 +263,7 @@ export default function Services() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-extrabold text-center mb-16"
-            style={{ color: logoColors.purple }} // BRANDED
+            style={{ color: logoColors.purple }} 
           >
             How Booking Works
           </motion.h2>
@@ -291,12 +275,12 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.1 * (idx + 1) }}
-                className="p-8 bg-white rounded-lg shadow-xl flex flex-col items-center" // BRANDED
+                className="p-8 bg-white rounded-lg shadow-xl flex flex-col items-center"
               >
                 <div className="mb-4">{step.icon}</div>
                 <div 
                   className="text-7xl font-extrabold mb-4" 
-                  style={{ color: logoColors.orange }} // BRANDED
+                  style={{ color: logoColors.orange }}
                 >
                   {step.step}
                 </div>
@@ -310,7 +294,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* --- BRANDED: "Final CTA" Section --- */}
       <section 
         className="py-24 text-center"
         style={{ background: `linear-gradient(to right, ${logoColors.orange}, ${logoColors.lighterOrange})` }}

@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-// --- Asset Imports (Unchanged) ---
 import galleryBanner from '../assets/adventure-sri-lanka.jpg';
 import sigiriyaView from '../assets/cultural/sigiriya-view.jpg';
 import kandyTemple from '../assets/cultural/kandy-temple.jpg';
@@ -18,7 +17,6 @@ import bentotaWaterSports from '../assets/beaches/bentota.jpg';
 import ellaNineArchBridge from '../assets/adventure/nine-arch.jpg';
 import kitulgalaRafting from '../assets/adventure/kithulgala.jpg';
 
-// --- Brand Colors ---
 const logoColors = {
   purple: '#5A2A84',
   darkerPurple: '#3E1C5A',
@@ -26,7 +24,6 @@ const logoColors = {
   lighterOrange: '#FDBB2D',
 };
 
-// --- Data (Unchanged) ---
 const galleryImages = [
   { id: 1, src: sigiriyaView, alt: 'Panoramic view from Sigiriya Rock Fortress', category: 'Cultural' },
   { id: 2, src: kandyTemple, alt: 'Temple of the Tooth Relic in Kandy', category: 'Cultural' },
@@ -61,16 +58,14 @@ export default function Gallery() {
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen bg-gray-50" // Unchanged
+      className="min-h-screen bg-gray-50" 
     >
-      {/* --- Hero Section --- */}
       <section className="relative h-96 md:h-72 w-full flex items-center justify-center text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-[50%_25%] bg-no-repeat"
           style={{ backgroundImage: `url(${galleryBanner})` }}
           aria-label="Beautiful montage of Sri Lankan attractions"
         ></div>
-        {/* === UPDATED OVERLAY === */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
         
         <motion.div
@@ -88,7 +83,6 @@ export default function Gallery() {
         </motion.div>
       </section>
 
-      {/* --- Intro Text Section --- */}
       <section className="py-16 bg-white text-gray-800">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.h2
@@ -97,7 +91,7 @@ export default function Gallery() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-extrabold text-center mb-8"
-            style={{ color: logoColors.purple }} // BRANDED
+            style={{ color: logoColors.purple }} 
           >
             Immerse Yourself
           </motion.h2>
@@ -113,7 +107,6 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* --- BRANDED Filter Button Section --- */}
       <section className="py-10 bg-gray-100">
         <div className="container mx-auto px-6 flex flex-wrap justify-center gap-4">
           {categories.map(cat => (
@@ -124,8 +117,8 @@ export default function Gallery() {
               onClick={() => setFilter(cat)}
               className={`px-6 py-2 rounded-full text-lg font-semibold transition-all duration-300 ${
                 filter === cat
-                  ? 'bg-brand-purple text-white shadow-md' // BRANDED Active State
-                  : 'bg-white text-brand-purple border border-brand-purple hover:bg-purple-50' // BRANDED Inactive State
+                  ? 'bg-brand-purple text-white shadow-md' 
+                  : 'bg-white text-brand-purple border border-brand-purple hover:bg-purple-50' 
               }`}
               style={{
                 '--tw-shadow-color': logoColors.purple,
@@ -138,7 +131,6 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* --- Image Grid Section (No changes needed, already looks great) --- */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -177,9 +169,8 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* --- BRANDED Final CTA Section --- */}
       <section 
-        className="py-24 text-center" // Increased padding
+        className="py-24 text-center" 
         style={{ background: `linear-gradient(to right, ${logoColors.orange}, ${logoColors.lighterOrange})` }}
       >
         <div className="container mx-auto px-6 max-w-3xl">
@@ -210,17 +201,17 @@ export default function Gallery() {
             <Button
               variant="contained"
               component={Link}
-              to="/services" // Links to services, which is great!
+              to="/services" 
               size="large"
               sx={{ 
                 fontWeight: 'bold', 
                 px: 8, py: 2, 
                 fontSize: '1.25rem',
                 backgroundColor: 'white',
-                color: logoColors.purple, // BRANDED
+                color: logoColors.purple, 
                 '&:hover': {
                   backgroundColor: '#f3f4f6',
-                  color: logoColors.darkerPurple // BRANDED
+                  color: logoColors.darkerPurple 
                 }
               }}
             >

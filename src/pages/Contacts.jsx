@@ -1,10 +1,9 @@
-import { useState, useRef } from 'react'; // Added useRef
+import { useState, useRef } from 'react'; 
 import { motion } from 'framer-motion';
-import { Button, TextField, IconButton, Alert } from '@mui/material'; // Added Alert
+import { Button, TextField, IconButton, Alert } from '@mui/material'; 
 import { Link } from 'react-router-dom';
-import emailjs from '@emailjs/browser'; // 1. Import EmailJS
+import emailjs from '@emailjs/browser'; 
 
-// --- Import Page-Specific Icons ---
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -16,7 +15,6 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 import contactBannerImage from '../assets/traveller.jpg';
 
-// --- Brand Colors ---
 const logoColors = {
   purple: '#5A2A84',
   darkerPurple: '#3E1C5A',
@@ -25,7 +23,7 @@ const logoColors = {
 };
 
 export default function Contact() {
-  const form = useRef(); // 2. Create a ref for the form
+  const form = useRef();
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
@@ -33,19 +31,17 @@ export default function Contact() {
     e.preventDefault();
     setIsSending(true);
 
-    // 3. Send the email using EmailJS
     emailjs.sendForm(
-      'service_sx6ppbf',     // <-- Paste your Service ID
-      'contact_us_form',    // <-- Paste your Template ID
+      'service_sx6ppbf',     // <--  Service ID
+      'contact_us_form',    // <-- Template ID
       form.current,
-      'ghfiBcYBYZC__KwNg'      // <-- Paste your Public Key
+      'ghfiBcYBYZC__KwNg'      // <-- Public Key
     )
     .then(
       (result) => {
         console.log('SUCCESS!', result.text);
         setIsSending(false);
         setIsSent(true);
-        // Optional: Reset form
         form.current.reset();
       },
       (error) => {
@@ -62,7 +58,6 @@ export default function Contact() {
       transition={{ duration: 0.6 }}
       className="min-h-screen bg-gray-50"
     >
-      {/* --- Hero Section --- */}
       <section className="relative h-96 w-full flex items-center justify-center text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -86,7 +81,6 @@ export default function Contact() {
         </motion.div>
       </section>
 
-      {/* --- Two-Column Layout (Info + Form) --- */}
       <section className="py-24 bg-white text-gray-800">
         <div className="container mx-auto px-6 max-w-6xl">
           <motion.h2
@@ -101,7 +95,6 @@ export default function Contact() {
           </motion.h2>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* --- Column 1: Info Block --- */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -109,7 +102,6 @@ export default function Contact() {
               transition={{ duration: 0.6 }}
               className="bg-gray-50 p-8 rounded-lg shadow-lg"
             >
-              {/* (Info block content is unchanged) */}
               <h3 className="text-3xl font-bold mb-6" style={{ color: logoColors.purple }}>
                 Reach Out Directly
               </h3>
@@ -174,7 +166,6 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            {/* --- Column 2: Contact Form --- */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -191,14 +182,14 @@ export default function Contact() {
                 <TextField
                   fullWidth
                   label="Your Name"
-                  name="name" // Make sure 'name' matches your EmailJS template
+                  name="name" 
                   required
                   variant="outlined"
                 />
                 <TextField
                   fullWidth
                   label="Your Email"
-                  name="email" // Make sure 'name' matches your EmailJS template
+                  name="email"
                   type="email"
                   required
                   variant="outlined"
@@ -206,20 +197,19 @@ export default function Contact() {
                 <TextField
                   fullWidth
                   label="Subject"
-                  name="subject" // Make sure 'name' matches your EmailJS template
+                  name="subject"
                   variant="outlined"
                 />
                 <TextField
                   fullWidth
                   label="Your Message"
-                  name="message" // Make sure 'name' matches your EmailJS template
+                  name="message" 
                   required
                   multiline
                   rows={6}
                   variant="outlined"
                 />
                 
-                {/* 5. Show success message */}
                 {isSent && (
                   <Alert severity="success">Message Sent! We will get back to you soon.</Alert>
                 )}
@@ -229,7 +219,7 @@ export default function Contact() {
                   variant="contained"
                   size="large"
                   fullWidth
-                  disabled={isSending} // Disable button while sending
+                  disabled={isSending} 
                   sx={{
                     fontWeight: 'bold',
                     py: 1.5,
@@ -248,12 +238,10 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* --- Final CTA (Unchanged) --- */}
       <section 
         className="py-24 text-center"
         style={{ background: `linear-gradient(to right, ${logoColors.orange}, ${logoColors.lighterOrange})` }}
       >
-        {/* (Content is unchanged) */}
         <div className="container mx-auto px-6 max-w-3xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

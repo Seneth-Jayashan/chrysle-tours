@@ -8,11 +8,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#F7941E', // Your logo's orange
+      main: '#F7941E',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#5A2A84', // Your logo's purple
+      main: '#5A2A84',
     },
   },
 });

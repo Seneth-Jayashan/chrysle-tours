@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton, Button, Typography } from '@mui/material'; 
 
-// Import MUI Icons
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -11,10 +10,8 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone'; 
 import LocationOnIcon from '@mui/icons-material/LocationOn'; 
 
-// Import your logo
 import CompanyLogo from '../assets/logo-transparent.png'; 
 
-// Define brand colors to match your site
 const logoColors = {
   purple: '#5A2A84',
   darkerPurple: '#3E1C5A',
@@ -28,14 +25,11 @@ export default function Footer() {
   return (
     <footer 
       className="text-gray-300 py-16 px-4 sm:px-6 lg:px-8 font-sans"
-      // 1. Use the brand's dark purple gradient
       style={{ background: `linear-gradient(to bottom, ${logoColors.purple}, ${logoColors.darkerPurple})` }}
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-        {/* Column 1: Logo and Socials */}
         <div className="flex flex-col items-start md:col-span-1">
-          {/* 2. Adjusted logo size */}
           <img src={CompanyLogo} alt="Chrysle Tours Logo" className="h-20 object-contain mb-4" /> 
           
           <Typography variant="body2" className="text-gray-300 mb-5">
@@ -48,7 +42,6 @@ export default function Footer() {
               href="https://www.facebook.com/people/Chrysle-Tours/61555784379931/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              // 3. Branded hover effect
               sx={{ color: '#bdbdbd', '&:hover': { color: logoColors.lighterOrange } }}
             >
               <FacebookIcon />
@@ -83,7 +76,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Column 2: Quick Links */}
         <div className="md:col-span-1">
           <Typography variant="h6" component="h4" className="text-white font-semibold mb-5">
             Quick Links
@@ -112,7 +104,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 3: Get In Touch */}
         <div className="md:col-span-1">
           <Typography variant="h6" component="h4" className="text-white font-semibold mb-5">
             Get In Touch
@@ -146,7 +137,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 4: CTA */}
         <div className="md:col-span-1 lg:col-span-1">
           <Typography variant="h6" component="h4" className="text-white font-semibold mb-5">
             Plan Your Dream Trip
@@ -158,7 +148,6 @@ export default function Footer() {
             variant="contained"
             component={Link}
             to="/contact"
-            // 4. Styled to match the site's main orange CTA button
             sx={{
               fontWeight: 'bold',
               px: 5,
@@ -179,7 +168,6 @@ export default function Footer() {
 
       </div>
 
-      {/* Footer Bottom */}
       <div className="border-t border-gray-700/50 mt-16 pt-8 text-center text-gray-400 text-sm">
         <Typography variant="body2">
           &copy; {currentYear} Chrysle Tours. All rights reserved.

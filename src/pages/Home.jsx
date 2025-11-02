@@ -9,7 +9,6 @@ import MapIcon from '@mui/icons-material/Map';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 
 
-// --- Hero Videos (Unchanged) ---
 import HeroVideo1 from '../assets/videos/hero-video-1.mp4';
 import HeroVideo2 from '../assets/videos/hero-video-2.mp4';
 import HeroVideo3 from '../assets/videos/hero-video-3.mp4';
@@ -25,7 +24,6 @@ import WhyVideo from '../assets/videos/why-us-video.mp4';
 
 const heroVideos = [HeroVideo1, HeroVideo2, HeroVideo3];
 
-// --- Color Palette (Unchanged) ---
 const logoColors = {
   purple: '#5A2A84',
   orange: '#F7941E',
@@ -35,7 +33,6 @@ const logoColors = {
   lighterOrange: '#FDBB2D',
 };
 
-// --- Destinations (Unchanged) ---
 const featuredDestinations = [
   { 
     name: 'Sigiriya', 
@@ -75,7 +72,6 @@ const featuredDestinations = [
   }
 ];
 
-// --- Special Interests (Unchanged) ---
 const specialInterests = [
   { name: 'Wildlife Safaris', description: 'Encounter leopards, elephants, and exotic birds in their natural habitats.', icon: '🐾' }, 
   { name: 'Cultural & Heritage Trails', description: 'Step back in time through ancient cities and sacred temples.', icon: '🏛️' },
@@ -88,7 +84,6 @@ const specialInterests = [
 export default function Home() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
-  // --- Hero Slider Logic (Unchanged) ---
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % heroVideos.length);
@@ -111,7 +106,6 @@ export default function Home() {
       transition={{ duration: 0.8 }}
       className="flex flex-col items-center overflow-x-hidden" 
     >
-      {/* --- Hero Section with Video SLIDER (Unchanged) --- */}
       <section className="relative h-screen w-full overflow-hidden">
         <AnimatePresence initial={false}>
           <motion.video 
@@ -171,10 +165,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* --- "Why Choose Us" Section (Unchanged Layout) --- */}
       <section className="py-24 w-full bg-gray-100">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          {/* Video Column (Unchanged) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -192,7 +184,6 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* === UPDATED Content Column === */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -206,7 +197,6 @@ export default function Home() {
               We're not just a travel agency; we're your personal guides to the authentic heart of Sri Lanka.
             </p>
 
-            {/* NEW Icon List Layout */}
             <div className="space-y-8 mb-12">
               <motion.div
                 initial={{ opacity: 0, y: 30 }} 
@@ -215,16 +205,14 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="flex items-start space-x-4"
               >
-                {/* Icon */}
                 <div className="flex-shrink-0">
                   <EmojiPeopleIcon 
                     sx={{ 
-                      fontSize: '3rem', // Larger icon
+                      fontSize: '3rem',
                       color: logoColors.purple 
                     }} 
                   />
                 </div>
-                {/* Text Content */}
                 <div>
                   <h3 className="text-2xl font-bold mb-1" style={{ color: logoColors.purple }}>
                     Expert Local Guides
@@ -242,7 +230,6 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex items-start space-x-4"
               >
-                {/* Icon */}
                 <div className="flex-shrink-0">
                   <MapIcon 
                     sx={{ 
@@ -251,7 +238,6 @@ export default function Home() {
                     }} 
                   />
                 </div>
-                {/* Text Content */}
                 <div>
                   <h3 className="text-2xl font-bold mb-1" style={{ color: logoColors.purple }}>
                     Fully Customized Trips
@@ -269,7 +255,6 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="flex items-start space-x-4"
               >
-                {/* Icon */}
                 <div className="flex-shrink-0">
                   <SupportAgentIcon 
                     sx={{ 
@@ -278,7 +263,6 @@ export default function Home() {
                     }} 
                   />
                 </div>
-                {/* Text Content */}
                 <div>
                   <h3 className="text-2xl font-bold mb-1" style={{ color: logoColors.purple }}>
                     24/7 On-Trip Support
@@ -290,7 +274,6 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Button (Unchanged) */}
             <Button
               variant="outlined"
               size="large"
@@ -313,7 +296,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- IMPROVED UI: "Featured Destinations" (Interactive Overlay Grid) --- */}
       <section className="py-24 bg-white w-full">
         <div className="container mx-auto px-6">
           <motion.div
@@ -331,7 +313,6 @@ export default function Home() {
             </p>
           </motion.div>
           
-          {/* Interactive Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredDestinations.map((dest, index) => (
               <motion.div
@@ -342,8 +323,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }} 
                 className="relative bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer" // Added group for hover effects
               >
-                {/* Image */}
-                <div className="w-full h-72 overflow-hidden"> {/* Increased height for impact */}
+                <div className="w-full h-72 overflow-hidden"> 
                   <img 
                     src={dest.image} 
                     alt={dest.name} 
@@ -351,7 +331,6 @@ export default function Home() {
                   />
                 </div>
 
-                {/* Overlay Content */}
                 <div 
                   className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent 
                             flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 
@@ -378,7 +357,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Button to see more services (Unchanged) */}
           <div className="text-center mt-16">
               <Button
                 variant="contained"
@@ -403,7 +381,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- "Specialized Journeys" (Unchanged Grid) --- */}
       <section className="py-24 w-full bg-gray-50">
         <div className="container mx-auto px-6">
           <motion.div
@@ -439,7 +416,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- Final CTA (Unchanged) --- */}
       <section className="w-full">
         <div 
           className="m-5 p-12 md:p-16 rounded-lg text-white"

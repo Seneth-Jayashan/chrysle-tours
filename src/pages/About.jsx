@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-// --- Import NEW Icons ---
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import MapIcon from '@mui/icons-material/Map';
@@ -12,7 +11,6 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import ParkIcon from '@mui/icons-material/Park'; 
 import HandshakeIcon from '@mui/icons-material/Handshake';
 
-// --- Brand Colors ---
 const logoColors = {
   purple: '#5A2A84',
   darkerPurple: '#3E1C5A',
@@ -20,10 +18,9 @@ const logoColors = {
   lighterOrange: '#FDBB2D',
 };
 
-import AboutUsBanner from '../assets/about-us-banner.jpg'; // High-quality banner image
-import StoryImage from '../assets/story-image.jpg'; // Vibrant image for the story section
+import AboutUsBanner from '../assets/about-us-banner.jpg'; 
+import StoryImage from '../assets/story-image.jpg'; 
 
-// --- UPGRADED: "Why Choose Us" data with MUI Icons ---
 const whyChooseUsItems = [
   {
     title: "Custom-Made Itineraries",
@@ -66,13 +63,11 @@ export default function About() {
       transition={{ duration: 0.6 }}
       className="min-h-screen" 
     >
-      {/* --- Hero Section --- */}
       <section className="relative h-96 md:h-72 w-full flex items-center justify-center text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-[50%_85%] bg-no-repeat"
           style={{ backgroundImage: `url(${AboutUsBanner})` }}
         />
-        {/* === UPDATED OVERLAY === */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/90 to-transparent" />
         
         <motion.div
@@ -90,10 +85,8 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* --- NEW LAYOUT: "Our Story" Section --- */}
       <section className="py-24 bg-white text-gray-800">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -119,7 +112,6 @@ export default function About() {
             </div>
           </motion.div>
           
-          {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -136,7 +128,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* --- NEW UI: "Mission & Vision" --- */}
       <section className="py-24 bg-gray-50 text-gray-800">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.h2
@@ -190,7 +181,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* --- UPGRADED ICONS: "Why Choose Us" --- */}
       <section className="py-24 bg-white text-gray-800">
         <div className="container mx-auto px-6 max-w-6xl">
           <motion.h2
@@ -224,7 +214,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* --- BRANDED: "Sustainability" Section --- */}
       <section 
         className="py-24 text-white"
         style={{ background: `linear-gradient(to top, ${logoColors.darkerPurple}, ${logoColors.purple})` }}
@@ -254,7 +243,7 @@ export default function About() {
             <Button
               variant="contained"
               component={Link}
-              to="/contact" // You might want a dedicated /sustainability page later
+              to="/contact"
               size="large"
               sx={{ 
                 fontWeight: 'bold', px: 6, py: 1.5, 
@@ -272,7 +261,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* --- BRANDED: "Final CTA" Section --- */}
       <section 
         className="py-24 text-center"
         style={{ background: `linear-gradient(to right, ${logoColors.orange}, ${logoColors.lighterOrange})` }}
