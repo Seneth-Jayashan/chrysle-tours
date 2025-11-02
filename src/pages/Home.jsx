@@ -15,6 +15,14 @@ import HeroVideo2 from '../assets/videos/hero-video-2.mp4';
 import HeroVideo3 from '../assets/videos/hero-video-3.mp4';
 import WhyVideo from '../assets/videos/why-us-video.mp4'; 
 
+// Video - Downloadable Links
+// https://www.pexels.com/download/video/32718989/
+// https://www.pexels.com/download/video/32504536/
+// https://www.pexels.com/download/video/13234027/
+// https://www.pexels.com/download/video/33220127/
+// https://www.pexels.com/download/video/29330747/
+
+
 const heroVideos = [HeroVideo1, HeroVideo2, HeroVideo3];
 
 // --- Color Palette (Unchanged) ---
@@ -76,14 +84,6 @@ const specialInterests = [
   { name: 'Culinary & Tea Experiences', description: 'Savor authentic Sri Lankan flavors and explore lush tea plantations.', icon: '☕' },
   { name: 'Eco-Tourism & Sustainable Travel', description: 'Travel responsibly and connect deeply with nature and local communities.', icon: '🌿' },
 ];
-
-// --- Testimonials (Unchanged) ---
-const testimonials = [
-  { quote: "Chrysle Tours crafted the most incredible honeymoon for us! Every detail was perfect, from the stunning hotels to the insightful guides.", name: "Sarah & Mark T.", origin: "UK" },
-  { quote: "Our family trip to Sri Lanka was a dream come true, thanks to Chrysle Tours. The wildlife safari was unforgettable!", name: "The Rodriguez Family", origin: "USA" },
-  { quote: "I loved the flexibility and local insights Chrysle Tours provided. It truly felt like a personalized adventure.", name: "David L.", origin: "Australia" },
-];
-
 
 export default function Home() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
