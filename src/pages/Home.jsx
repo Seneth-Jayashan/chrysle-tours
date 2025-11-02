@@ -40,37 +40,37 @@ const featuredDestinations = [
   { 
     name: 'Sigiriya', 
     description: 'Climb the iconic Lion Rock fortress and witness breathtaking ancient frescoes and panoramic views.', 
-    image: 'https://images.pexels.com/photos/2401666/pexels-photo-2401666.jpeg', 
+    image: 'https://images.pexels.com/photos/13391116/pexels-photo-13391116.jpeg', 
     link: '/services#sigiriya' 
   },
   { 
     name: 'Kandy', 
     description: 'Explore the cultural capital, home to the sacred Temple of the Tooth Relic and lush botanical gardens.', 
-    image: 'https://images.pexels.com/photos/1684346/pexels-photo-1684346.jpeg', 
+    image: 'https://images.pexels.com/photos/322437/pexels-photo-322437.jpeg', 
     link: '/services#kandy' 
   },
   { 
     name: 'Yala National Park', 
     description: 'Embark on an thrilling safari to spot elusive leopards, majestic elephants, and diverse wildlife.', 
-    image: 'https://images.pexels.com/photos/1480520/pexels-photo-1480520.jpeg', 
+    image: 'https://images.pexels.com/photos/33130315/pexels-photo-33130315.jpeg', 
     link: '/services#yala' 
   },
   { 
     name: 'Galle Fort', 
     description: 'Wander through the UNESCO World Heritage Site, a charming colonial fort with Dutch architecture.', 
-    image: 'https://images.pexels.com/photos/103561/pexels-photo-103561.jpeg', 
+    image: 'https://images.pexels.com/photos/27669335/pexels-photo-27669335.jpeg', 
     link: '/services#galle' 
   },
   {
     name: 'Mirissa',
     description: 'Famous for its stunning beaches, whale watching tours, and vibrant nightlife.',
-    image: 'https://images.pexels.com/photos/3601094/pexels-photo-3601094.jpeg',
+    image: 'https://images.pexels.com/photos/7953000/pexels-photo-7953000.jpeg',
     link: '/services#mirissa'
   },
   {
     name: 'Ella',
     description: 'Hike to the top of Ella Rock, see the Nine Arch Bridge, and enjoy the cool mountain air.',
-    image: 'https://images.pexels.com/photos/3784433/pexels-photo-3784433.jpeg',
+    image: 'https://images.pexels.com/photos/2403209/pexels-photo-2403209.jpeg',
     link: '/services#ella'
   }
 ];

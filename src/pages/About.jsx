@@ -20,9 +20,8 @@ const logoColors = {
   lighterOrange: '#FDBB2D',
 };
 
-// --- Assets (Using your local paths) ---
 import AboutUsBanner from '../assets/about-us-banner.jpg'; // High-quality banner image
-const StoryImage = '../assets/story-image.jpg'; // Vibrant image for the story section
+import StoryImage from '../assets/story-image.jpg'; // Vibrant image for the story section
 
 // --- UPGRADED: "Why Choose Us" data with MUI Icons ---
 const whyChooseUsItems = [
@@ -70,7 +69,7 @@ export default function About() {
       {/* --- Hero Section --- */}
       <section className="relative h-96 md:h-72 w-full flex items-center justify-center text-white overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-bottom bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-[50%_85%] bg-no-repeat"
           style={{ backgroundImage: `url(${AboutUsBanner})` }}
         />
         {/* === UPDATED OVERLAY === */}
