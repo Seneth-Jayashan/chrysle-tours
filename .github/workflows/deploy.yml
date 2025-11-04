@@ -1,9 +1,10 @@
-name: 🚀 Deploy to cPanel via FTP
+name: 🚀 Deploy to cPanel via SFTP
 
 on:
   push:
     branches:
-      - main  
+      - main
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -17,21 +18,16 @@ jobs:
 
       - name: Build project
         run: |
-          # React (CRA or Vite)
-          if [ -d "src" ]; then npm run build; fi
-          
-          # Next.js Static Export
-          if [ -f "next.config.js" ]; then npm run build && npm run export; fi
+          npm run build
 
-      - name: Deploy to cPanel via FTP
+      - name: Deploy via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          local-dir: dist/        
-          # local-dir: out/        
+          protocol: sftp             
+          local-dir: dist/            # or build/ or out/
           server-dir: ${{ secrets.FTP_PATH }}/
           exclude: |
             **/.git*
