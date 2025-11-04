@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/chrysletours.com/
+    - /bin/npm install
+    - /bin/npm run build
+    - /bin/cp -R dist/* $DEPLOYPATH
