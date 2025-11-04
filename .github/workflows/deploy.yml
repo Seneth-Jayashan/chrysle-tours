@@ -3,8 +3,7 @@ name: 🚀 Deploy to cPanel via FTP
 on:
   push:
     branches:
-      - main 
-
+      - main  
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -18,7 +17,7 @@ jobs:
 
       - name: Build project
         run: |
-          # React (Vite/CRA)
+          # React (CRA or Vite)
           if [ -d "src" ]; then npm run build; fi
           
           # Next.js Static Export
@@ -31,8 +30,9 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
-          local-dir: build 
-          server-dir: ${{ secrets.FTP_PATH }}
+          local-dir: dist/        
+          # local-dir: out/        
+          server-dir: ${{ secrets.FTP_PATH }}/
           exclude: |
             **/.git*
             **/.github*
