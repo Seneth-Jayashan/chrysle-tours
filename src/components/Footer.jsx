@@ -111,9 +111,9 @@ export default function Footer() {
           <ul className="space-y-4">
             <li className="flex items-center">
               <PhoneIcon sx={{ fontSize: 20, mr: 1.5, color: logoColors.lighterOrange }} />
-              <a href="tel:+94777601787" className="text-gray-300 hover:text-white transition-colors duration-200">
+              <a href="tel:+94777770726" className="text-gray-300 hover:text-white transition-colors duration-200">
                 <Typography component="span" variant="body2">
-                  +94 777 601 787
+                  +94 77 777 0726
                 </Typography>
               </a>
             </li>

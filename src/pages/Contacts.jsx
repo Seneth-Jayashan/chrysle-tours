@@ -108,7 +108,7 @@ export default function Contact() {
               <div className="space-y-6 text-lg">
                 <p className="flex items-center">
                   <PhoneIcon className="mr-3" style={{ color: logoColors.purple }} />
-                  <strong>Phone:</strong> <a href="tel:+94777601787" className="ml-2 text-gray-700 hover:text-brand-orange transition">+94 777 601 787</a>
+                  <strong>Phone:</strong> <a href="tel:+94777770726" className="ml-2 text-gray-700 hover:text-brand-orange transition">+94 77 777 0726</a>
                 </p>
                 <p className="flex items-center">
                   <EmailIcon className="mr-3" style={{ color: logoColors.purple }} />
